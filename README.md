@@ -9,7 +9,7 @@ cd Bill-checking
 
 - Dependencies Installation
 ```language=python
-pip install requirements.txt
+pip install -r requirements.txt
 ```
 
 - **Add Excel and Invoice folder inside Bill-checking**
