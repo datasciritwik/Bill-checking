@@ -12,6 +12,7 @@ def capture_pdf(pdf_file_path, out_folder):
         image_file = f"{out_folder}/docx_{pdf_file_path.split('/')[-1].split('.')[0]}_page_{page_number}.jpg"
         image.save(image_file)
     print(f"Images Saved...{image_file}")
+    return total_page
 
 def create_dir(path):
     try:
