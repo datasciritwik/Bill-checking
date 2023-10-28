@@ -4,7 +4,7 @@ import helper
 import cv2
 import os
 
-st.set_page_config(layout='centered') ##centered, wide
+st.set_page_config(layout='wide') ##centered, wide
 
 WORKDIR = os.getcwd()
 
@@ -40,9 +40,42 @@ def main():
         imgs_path = os.listdir('out')
         img = st.selectbox('SELECT IMAGE', imgs_path[::-1])
         img_path = f"out/{img}"
+        # st.write(f"{(imgs_path[::-1][-1])}")
+        if num == 2:
+            col1, col2 = st.columns(2)
+            img1 = cv2.imread(f"out/{imgs_path[::-1][1]}")
+            img2 = cv2.imread(f"out/{imgs_path[::-1][0]}")
+            col1.image(img1, use_column_width=True, caption=f"out/{imgs_path[::-1][1]}")
+            col2.image(img2, use_column_width=True, caption=f"out/{imgs_path[::-1][0]}")
+            
+        elif num == 3:
+            col1, col2, col3 = st.columns(3)
 
-        img = cv2.imread(img_path)
-        st.image(img, use_column_width=True)
+            img1 = cv2.imread(f"out/{imgs_path[::-1][2]}")
+            img2 = cv2.imread(f"out/{imgs_path[::-1][1]}")
+            img3 = cv2.imread(f"out/{imgs_path[::-1][0]}")
+
+            col1.image(img1, use_column_width=True, caption=f"out/{imgs_path[::-1][2]}")
+            col2.image(img2, use_column_width=True, caption=f"out/{imgs_path[::-1][1]}")
+            col3.image(img3, use_column_width=True, caption=f"out/{imgs_path[::-1][0]}")
+
+        elif num == 4:
+            col1, col2 = st.columns(2)
+            col3, col4 = st.columns(2)
+
+            img1 = cv2.imread(f"out/{imgs_path[::-1][3]}")
+            img2 = cv2.imread(f"out/{imgs_path[::-1][2]}")
+            img3 = cv2.imread(f"out/{imgs_path[::-1][1]}")
+            img4 = cv2.imread(f"out/{imgs_path[::-1][0]}")
+
+            col1.image(img1, use_column_width=True, caption=f"out/{imgs_path[::-1][3]}")
+            col2.image(img2, use_column_width=True, caption=f"out/{imgs_path[::-1][2]}")
+            col3.image(img3, use_column_width=True, caption=f"out/{imgs_path[::-1][1]}")
+            col4.image(img4, use_column_width=True, caption=f"out/{imgs_path[::-1][0]}")
+
+        else:
+            img = cv2.imread(img_path)
+            st.image(img, use_column_width=True)
     else:
         raise("Pdf path not defined.")
 
